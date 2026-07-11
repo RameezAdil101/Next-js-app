@@ -25,7 +25,7 @@ jobs:
           run: npm run build
 
         - name: Build on Artifacts
-          uses: astertom/nexus-upload-artifact@v1.1.0
+          uses: actions/upload-artifact@v4
           with:
             name: Next js build
             path: |
