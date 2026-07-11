@@ -33,7 +33,4 @@ jobs:
              public/
              package.json
              package-lock.json
-           retention-days: 7
-          
-        
-       
+            retention-days: 7
