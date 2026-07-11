@@ -28,7 +28,12 @@ jobs:
           uses: astertom/nexus-upload-artifact@v1.1.0
           with:
             name: Next js build
-            path: out/
+            path: |
+             .next/
+             public/
+             package.json
+             package-lock.json
+           retention-days: 7
           
         
        
