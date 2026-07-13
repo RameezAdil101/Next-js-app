@@ -28,4 +28,4 @@ jobs:
       - name: Mirror to GitLab via SSH
         run: |
           # Replace YOUR_GITLAB_GROUP with your actual GitLab group name
-          git push --prune --force git@gitlab.com:https://gitlab.com/practice-projects5105129/${{ github.event.repository.name }}.git refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+          git push --prune --force git@gitlab.com:gitlab.com/practice-projects5105129/${{ github.event.repository.name }}.git refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
