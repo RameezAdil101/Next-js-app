@@ -1,0 +1,31 @@
+name: Sync to GitLab
+
+on:
+  push:
+    branches:
+      - main  # Change to 'master' if your default branch uses that name
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+          known_hosts: 'unnecessary'
+
+      - name: Add GitLab to Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
+      - name: Mirror to GitLab via SSH
+        run: |
+          # Replace YOUR_GITLAB_GROUP with your actual GitLab group name
+          git push --prune --force git@gitlab.com:https://gitlab.com/practice-projects5105129/${{ github.event.repository.name }}.git refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
