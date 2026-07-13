@@ -28,4 +28,5 @@ jobs:
       - name: Mirror to GitLab via SSH
         run: |
           # Replace YOUR_GITLAB_GROUP with your actual GitLab group name
+          export GIT_SSH_COMMAND="ssh -v"
           git push --prune --force git@gitlab.com:practice-projects5105129/next-js-app.git refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
